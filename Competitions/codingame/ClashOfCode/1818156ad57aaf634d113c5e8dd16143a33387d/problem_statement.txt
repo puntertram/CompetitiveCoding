@@ -1,0 +1,5 @@
+Given time in hh:mm format, print the duration in minutes
+input 
+02:50
+output
+110

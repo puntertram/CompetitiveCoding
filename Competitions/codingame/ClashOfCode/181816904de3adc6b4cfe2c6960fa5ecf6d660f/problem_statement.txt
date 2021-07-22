@@ -1,0 +1,13 @@
+You are to print the sum of the edges of the matrix
+
+input
+5 6 0 4
+1 5 4 6
+2 3 6 4
+1 0 2 5
+
+output
+-5 -6 -0 -4
+-1 5 4 -6
+-2 3 6 -4
+-1 -0 -2 -5

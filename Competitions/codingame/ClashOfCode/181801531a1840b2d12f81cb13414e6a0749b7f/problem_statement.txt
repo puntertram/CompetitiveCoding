@@ -1,0 +1,1 @@
+Given a matrix of bombs and unoccupied cells denoted by 'b' and 'o' respectively. you have to print the number of neighboring cells that are bombs if the cell does not have a bomb else print 'b'
