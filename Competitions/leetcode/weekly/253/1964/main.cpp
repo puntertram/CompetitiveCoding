@@ -26,22 +26,23 @@ int query(int x) {
 }
 class Solution {
 public:
-    vector<int> longestObstacleCourseAtEachPosition(vector<int>& obstacles) {
-        vector<int> unique_obstacles(obstacles);
-        sort(unique_obstacles.begin(), unique_obstacles.end());
-        unique_obstacles.erase(unique(unique_obstacles.begin(), unique_obstacles.end()), unique_obstacles.end());
-        for(auto &obstacle: obstacles) {
-            obstacle = lower_bound(unique_obstacles.begin(), unique_obstacles.end(), obstacle) - unique_obstacles.begin() + 1;
-        } 
-        int n = obstacles.size();
-        m = unique_obstacles.size();
+    vector<int> longestObstacleCourseAtEachPosition(vector<int>& o) {
+        vector<int> uo(o);
+        sort(uo.begin(), uo.end());
+        uo.erase(unique(uo.begin(), uo.end()), uo.end());
+        // replace o with relative ordering
+        for(int &oo : o) {
+            oo = lower_bound(uo.begin(), uo.end(), oo) - uo.begin() + 1;
+        }
+        // restore c to its original state
         c.assign(N, 0);
+        m = uo.size();
+        int n = o.size();
         vector<int> dp(n);
-        // time to calculate dp
-        for(int i = 0 ; i < n ; i++) {
-            int cur = query(obstacles[i]);
+        for(int i = 0 ; i < n; i++) {
+            int cur = query(o[i]);
             dp[i] = cur + 1;
-            update(obstacles[i], dp[i]);
+            update(o[i], cur + 1);
         }
         return dp;
     }
